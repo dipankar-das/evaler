@@ -19,11 +19,11 @@ app.get('/eval', function (req, res) {
 
 app.post('/', function (req, res) {
     let jsonData = req.body;
-    //console.log(jsonData);
+    console.log('input data: ', jsonData);
     Object.keys(jsonData).forEach(function(key) {
         jsonData[key] = eval(jsonData[key]);
     });
-    //console.log(jsonData);
+    console.log('output data: ', jsonData);
     res.send(jsonData);
 })
 
