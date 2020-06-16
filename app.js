@@ -21,7 +21,11 @@ app.post('/', function (req, res) {
     let jsonData = req.body;
     console.log('input data: ', jsonData);
     Object.keys(jsonData).forEach(function(key) {
-        jsonData[key] = eval(jsonData[key]);
+        try {
+            jsonData[key] = eval(jsonData[key]);
+        } catch(error) {
+            jsonData[key] = 'ERROR! ' + error;
+        }
     });
     console.log('output data: ', jsonData);
     res.send(jsonData);
