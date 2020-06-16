@@ -20,11 +20,15 @@ app.get('/eval', function (req, res) {
 app.post('/', function (req, res) {
     let jsonData = req.body;
     console.log('input data: ', jsonData);
+    jsonData['HAS_ERROR'] = false;
+    jsonData['ERROR_KEYS'] = [];
     Object.keys(jsonData).forEach(function(key) {
         try {
             jsonData[key] = eval(jsonData[key]);
         } catch(error) {
             jsonData[key] = 'ERROR! ' + error;
+            jsonData['HAS_ERROR'] = true;
+            jsonData['ERROR_KEYS'].push(key);
         }
     });
     console.log('output data: ', jsonData);
