@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
-    res.send('VMWare CPQ Expression Processor');
+    res.send('VMWare CPQ Expression Processor 1.0');
 })
 
 app.get('/eval', function (req, res) {
